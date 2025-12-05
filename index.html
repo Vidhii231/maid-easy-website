@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaidEasy - Professional Home Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-top">
+            <div class="logo-container">
+                <img src="logo.png" alt="MaidEasy Logo" class="logo">
+            </div>
+            
+            <nav>
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#experts">Our Experts</a>
+            </nav>
+            
+            <div class="auth-buttons">
+                <button class="btn btn-login" onclick="showForm('loginForm')">Login</button>
+                <button class="btn btn-signup" onclick="showForm('signupForm')">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>MaidEasy</h1>
+            <h2>Everything you want, made easy with MaidEasy.</h2>
+            <p>Find, book, and rate trusted maids who fit your schedule and preferences. Our platform provides you with a seamless and convenient experience, ensuring your home is always clean and tidy.</p>
+            <button class="btn btn-hero" onclick="showForm('signupForm')">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <!-- Washing Service -->
+            <div class="service-card">
+                <img src="washing.png" alt="Washing" class="service-image">
+                <div class="service-content">
+                    <h3>Washing</h3>
+                    <p>Professional laundry services including washing, drying, folding, and ironing.</p>
+                    <button class="btn btn-service" onclick="showService('washing')">Book Now</button>
+                </div>
+            </div>
+            
+            <!-- Cooking Service -->
+            <div class="service-card">
+                <img src="cooking.jpg" alt="Cooking" class="service-image">
+                <div class="service-content">
+                    <h3>Cooking</h3>
+                    <p>Expert cooks to prepare delicious, home-cooked meals based on your preferences.</p>
+                    <button class="btn btn-service" onclick="showService('cooking')">Book Now</button>
+                </div>
+            </div>
+            
+            <!-- Cleaning Service -->
+            <div class="service-card">
+                <img src="cleaning.png" alt="Cleaning" class="service-image">
+                <div class="service-content">
+                    <h3>Cleaning</h3>
+                    <p>Thorough cleaning of your home, including dusting, vacuuming, mopping, and organizing.</p>
+                    <button class="btn btn-service" onclick="showService('cleaning')">Book Now</button>
+                </div>
+            </div>
+            
+            <!-- Dusting Service -->
+            <div class="service-card">
+                <img src="dusting.jpeg" alt="Dusting" class="service-image">
+                <div class="service-content">
+                    <h3>Dusting</h3>
+                    <p>Specialized dusting services to keep your home free from allergens and dust particles.</p>
+                    <button class="btn btn-service" onclick="showService('dusting')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Who We Are?</h2>
+                    <p>Founded with the vision to simplify your daily chores, MaidEasy is a trusted platform connecting you with skilled and reliable maids.</p>
+                    
+                    <h2>What We Offer?</h2>
+                    <p>At MaidEasy, we pride ourselves on offering a wide range of services to cater to every household's unique needs.</p>
+                    
+                    <h2>Why Choose MaidEasy?</h2>
+                    <p><strong>Tailored to Your Needs:</strong> We connect you with maids based on your exact requirements.</p>
+                    <p><strong>Trusted and Experienced Maids:</strong> All maids are fully vetted, trained, and experienced.</p>
+                </div>
+                
+                <div class="about-images">
+                    <img src="maid1.jpg" alt="Maid 1" class="about-img">
+                    <img src="maid2.jpg" alt="Maid 2" class="about-img">
+                    <img src="maid3.jpg" alt="Maid 3" class="about-img">
+                    <img src="maid4.jpg" alt="Maid 4" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rate Service Section -->
+    <section class="rate-service container">
+        <h2>Rate Our Services</h2>
+        <p>We value your feedback. Please let us know how we're doing!</p>
+        <div class="rating-stars">
+            <span class="star" onclick="rateService(1)">★</span>
+            <span class="star" onclick="rateService(2)">★</span>
+            <span class="star" onclick="rateService(3)">★</span>
+            <span class="star" onclick="rateService(4)">★</span>
+            <span class="star" onclick="rateService(5)">★</span>
+        </div>
+        <textarea placeholder="Leave a comment..." id="comment-box" rows="4"></textarea>
+        <br>
+        <button class="submit-btn" onclick="submitRating()">Submit Rating</button>
+    </section>
+
+    <!-- Forms Overlay -->
+    <div class="form-overlay" id="formOverlay" onclick="hideAllForms()"></div>
+    
+    <!-- Login Form -->
+    <div id="loginForm" class="form-container">
+        <button class="exit-btn" onclick="hideForm('loginForm')">X</button>
+        <h2>Login</h2>
+        <form onsubmit="return validateLogin(event)">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required>
+            
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required>
+            
+            <button type="submit" class="btn btn-login">Login</button>
+        </form>
+        <div id="loginMessage"></div>
+    </div>
+    
+    <!-- Sign-Up Form -->
+    <div id="signupForm" class="form-container">
+        <button class="exit-btn" onclick="hideForm('signupForm')">X</button>
+        <h2>Sign Up</h2>
+        <form onsubmit="return signUp(event)">
+            <label for="signup-name">Name</label>
+            <input type="text" id="signup-name" required>
+            
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required>
+            
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required>
+            
+            <button type="submit" class="btn btn-signup">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MaidEasy</h3>
+                    <p>Making your daily chores easy with professional home services.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@maideasy.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MaidEasy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
